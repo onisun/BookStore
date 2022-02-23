@@ -7,13 +7,14 @@
     <link rel="stylesheet" th:href="@{/static/css/minireset.css}" />
     <link rel="stylesheet" th:href="@{/static/css/common.css}" />
     <link rel="stylesheet" th:href="@{/static/css/cart.css}" />
+    <script language="JavaScript" th:src="@{/static/script/cart.js}"></script>
   </head>
   <body>
     <div class="header">
       <div class="w">
         <div class="header-left">
           <a href="../index.html">
-            <img th:src="@{/static/img/logo.gif}" alt=""
+            <img th:src="@{/static/img/logo.gif}"
           /></a>
           <h1>我的购物车</h1>
         </div>
@@ -22,7 +23,7 @@
           <div class="order"><a th:href="@{order.do}">我的订单</a></div>
           <div class="destory"><a href="../index.html">注销</a></div>
           <div class="gohome">
-            <a href="../index.html">返回</a>
+            <a th:href="@{book.do}">返回</a>
           </div>
         </div>
       </div>
@@ -48,13 +49,12 @@
               </td>
               <td th:text="${cartItem.book.bookName}">活着</td>
               <td>
-                <span class="count">-</span>
+                <span class="count" th:onclick="|editCart(${cartItem.id},${cartItem.buyCount - 1})|">-</span>
                 <input class="count-num" type="text" th:value="${cartItem.buyCount}" />
-                <span class="count">+</span>
+                <span class="count" th:onclick="|editCart(${cartItem.id},${cartItem.buyCount + 1})|">+</span>
               </td>
-              <td th:text="|价格:${cartItem.book.price}|"></td>
               <td th:text="${cartItem.book.price}">36.8</td>
-              <td th:text="${cartItem.book.price * cartItem.buyCount}">36.8</td>
+              <td th:text="${cartItem.xj}">36.8</td>
               <td><a href="">删除</a></td>
             </tr>
           </tbody>

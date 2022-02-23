@@ -1,5 +1,6 @@
 package com.atguigu.book.pojo;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -31,8 +32,17 @@ public class Cart {
             Set<Map.Entry<Integer, CartItem>> entries = cartItemMap.entrySet();
             for (Map.Entry<Integer, CartItem> cartItemEntry : entries) {
                 CartItem cartItem = cartItemEntry.getValue();
-                totalMoney = totalMoney + cartItem.getBook().getPrice() * cartItem.getBuyCount();
+                //用BigDecimal包装单价和数量
+                BigDecimal price = new BigDecimal(cartItem.getBook().getPrice());
+                BigDecimal buyCount = new BigDecimal(cartItem.getBuyCount());
+                //单价 * 数量 得到总价
+                BigDecimal totalPrice = price.multiply(buyCount);
+                BigDecimal total = new BigDecimal(totalMoney);
+                //总价累加
+                total = total.add(totalPrice);
+                totalMoney = total.doubleValue();
             }
+
         }
         return totalMoney;
     }
