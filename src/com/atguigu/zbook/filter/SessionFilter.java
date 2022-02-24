@@ -1,8 +1,6 @@
 package com.atguigu.zbook.filter;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,10 +12,10 @@ import java.util.List;
  * @author Neo
  * @version 1.0
  */
-@WebFilter(urlPatterns = {"*.do","*.html"},initParams = {
+/*@WebFilter(urlPatterns = {"*.do","*.html"},initParams = {
         @WebInitParam(name = "access", value = "/web24/page.do?operate=page&page=user/login," +
-                "/web24/user.do?null")
-})
+                "/web24/user.do?null,/web24/page.do?operate=page&page=user/regist")
+})*/
 public class SessionFilter implements Filter {
     List<String> accessList = null;
     @Override

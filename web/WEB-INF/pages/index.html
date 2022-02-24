@@ -21,8 +21,8 @@
             <i class="iconfont icon-ai-arrow-down"></i>
           </div>
           <div class="topbar-right" th:if="${session.currUser == null}">
-            <a href="user/login.html" class="login" >登录</a>
-            <a href="user/regist.html" class="register" th:if="${session.currUser == null}">注册</a>
+            <a th:href="@{/page.do?operate=page&page=user/login}" class="login" >登录</a>
+            <a th:href="@{/page.do?operate=page&page=user/regist}" class="register" th:if="${session.currUser == null}">注册</a>
             <a th:href="cart/cart.html" class="cart iconfont icon-gouwuche">购物车
               <div class="cart-num">3</div>
             </a>

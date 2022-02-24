@@ -10,6 +10,13 @@ public class User {
     private Integer role ;
     private Cart cart;
 
+    public User( String uname, String pwd, String email, Integer role) {
+        this.uname = uname;
+        this.pwd = pwd;
+        this.email = email;
+        this.role = role;
+    }
+
     private List<OrderBean> orderBeanList;
 
     public List<OrderBean> getOrderBeanList() {

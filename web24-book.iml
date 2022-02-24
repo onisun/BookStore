@@ -34,5 +34,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="kaptcha-2.3.2" level="project" />
   </component>
 </module>

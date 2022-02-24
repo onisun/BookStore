@@ -33,8 +33,8 @@ public class Cart {
             for (Map.Entry<Integer, CartItem> cartItemEntry : entries) {
                 CartItem cartItem = cartItemEntry.getValue();
                 //用BigDecimal包装单价和数量
-                BigDecimal price = new BigDecimal(cartItem.getBook().getPrice());
-                BigDecimal buyCount = new BigDecimal(cartItem.getBuyCount());
+                BigDecimal price = new BigDecimal(cartItem.getBook().getPrice() + "");
+                BigDecimal buyCount = new BigDecimal(cartItem.getBuyCount() + "");
                 //单价 * 数量 得到总价
                 BigDecimal totalPrice = price.multiply(buyCount);
                 BigDecimal total = new BigDecimal(totalMoney);

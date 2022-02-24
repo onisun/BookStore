@@ -26,4 +26,17 @@ public class UserController {
         return "user/login";
 
     }
+
+    public String regist(String uname,String pwd,String email,String verifyCode,HttpSession session){
+        Object kaptcha_session_key = session.getAttribute("KAPTCHA_SESSION_KEY");
+        if (verifyCode == null || !verifyCode.equals(kaptcha_session_key)){
+            session.setAttribute("registReturn","-1");
+            return "user/regist_success";
+        }
+        //注册
+        userService.addUser(new User(uname,pwd,email,0));
+        session.setAttribute("registReturn","1");
+        return "user/regist_success";
+
+    }
 }
