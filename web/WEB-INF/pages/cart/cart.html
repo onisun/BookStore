@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,9 @@
     <link rel="stylesheet" th:href="@{/static/css/minireset.css}" />
     <link rel="stylesheet" th:href="@{/static/css/common.css}" />
     <link rel="stylesheet" th:href="@{/static/css/cart.css}" />
-    <script language="JavaScript" th:src="@{/static/script/cart.js}"></script>
+    <script th:language="JavaScript" th:src="@{/static/script/cart.js}"></script>
+    <script th:language="JavaScript" th:src="@{/static/script/vue.js}"></script>
+    <script th:language="JavaScript" th:src="@{/static/script/axios.min.js}"></script>
   </head>
   <body>
     <div class="header">
@@ -28,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="list">
+    <div class="list" id="cart_div">
       <div class="w">
         <table>
           <thead>
@@ -43,19 +45,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="cartItem : ${session.currUser.cart.cartItemMap.values()}">
+            <tr v-for="cartItem in cart.cartItemMap">
               <td>
-                <img th:src="@{|/static/uploads/${cartItem.book.bookImg}|}" alt="" />
+                <img v-bind:src="'static/uploads/'+cartItem.book.bookImg"  alt="" />
               </td>
-              <td th:text="${cartItem.book.bookName}">活着</td>
+              <td>{{cartItem.book.bookName}}</td>
               <td>
-                <span class="count" th:onclick="|editCart(${cartItem.id},${cartItem.buyCount - 1})|">-</span>
-                <input class="count-num" type="text" th:value="${cartItem.buyCount}" />
-                <span class="count" th:onclick="|editCart(${cartItem.id},${cartItem.buyCount + 1})|">+</span>
+                <span class="count" @click="editCart(cartItem.id,cartItem.buyCount - 1)">-</span>
+                <input class="count-num" type="text" :value="cartItem.buyCount" />
+                <span class="count" @click="editCart(cartItem.id,cartItem.buyCount + 1)">+</span>
               </td>
-              <td th:text="${cartItem.book.price}">36.8</td>
-              <td th:text="${cartItem.xj}">36.8</td>
-              <td><a href="">删除</a></td>
+              <td>{{cartItem.book.price}}</td>
+              <td> {{cartItem.xj}} </td>
+              <td><a href="">删除</a></td>-
             </tr>
           </tbody>
         </table>
@@ -78,19 +80,19 @@
           <ul>
             <li>
               <a href="">
-                <img src="../../static/img/bottom1.png" alt="" />
+                <img th:src="@{/static/img/bottom1.png}" alt="" />
                 <span>大咖级讲师亲自授课</span>
               </a>
             </li>
             <li>
               <a href="">
-                <img src="../../static/img/bottom.png" alt="" />
+                <img th:src="@{/static/img/bottom.png}" alt="" />
                 <span>课程为学员成长持续赋能</span>
               </a>
             </li>
             <li>
               <a href="">
-                <img src="../../static/img/bottom2.png" alt="" />
+                <img th:src="@{/static/img/bottom2.png}" alt="" />
                 <span>学员真是情况大公开</span>
               </a>
             </li>

@@ -5,6 +5,7 @@ import com.atguigu.book.pojo.CartItem;
 import com.atguigu.book.pojo.User;
 import com.atguigu.book.service.CartItemService;
 import com.atguigu.book.pojo.Cart;
+import com.google.gson.Gson;
 
 import javax.servlet.http.HttpSession;
 
@@ -41,8 +42,16 @@ public class CartController {
         if (buyCount < 1)
             buyCount = 1;
         cartItemService.updateCartItem(new CartItem(cartItemId,buyCount));
-        return "redirect:cart.do";
+        return "";
     }
 
+    public String cartInfo(HttpSession session){
+        User user = (User) session.getAttribute("currUser");
+        Cart cart = cartItemService.getCart(user);
+        Gson gson = new Gson();
+        String cartJsonStr = gson.toJson(cart);
+        return "json:"+cartJsonStr;
+
+    }
 
 }
