@@ -15,7 +15,7 @@
     </context-param>
 
     <context-param>
-        <param-name>contextConfigLocation</param-name>
+        <param-name>ContextConfigLocation</param-name>
         <param-value>applicationContext.xml</param-value>
     </context-param>
 

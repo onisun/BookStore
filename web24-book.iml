@@ -23,7 +23,6 @@
     <orderEntry type="library" exported="" name="druid-1.1.10" level="project" />
     <orderEntry type="library" exported="" name="lib_thymeleaf" level="project" />
     <orderEntry type="library" exported="" name="mysql-connector-java-5.1.45-bin" level="project" />
-    <orderEntry type="library" exported="" name="myssm0.1" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="tomcat-8.0.42" level="application_server_libraries" />
     <orderEntry type="module-library" exported="">
       <library>
