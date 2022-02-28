@@ -28,19 +28,19 @@ window.onload = function () {
             },
             editCart:function (cartItemId,buyCount) {
                 axios({
-                    method:"POST",
-                    url:"card.do",
-                    params:{
-                        operate:'editCart',
+                    method: "POST",
+                    url: "cart.do",
+                    params: {
+                        operate: "editCart",
                         cartItemId:cartItemId,
                         buyCount:buyCount
                     }
                 }).then(function (value) {
                     vue.getCart();
+                })
+                    .catch(function (reason) {
 
-                }).catch(function (reason) {
-
-                });
+                    })
             }
         },
         mounted: function () {

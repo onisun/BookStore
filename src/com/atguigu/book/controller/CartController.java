@@ -48,6 +48,9 @@ public class CartController {
     public String cartInfo(HttpSession session){
         User user = (User) session.getAttribute("currUser");
         Cart cart = cartItemService.getCart(user);
+        cart.getTotalMoney();
+        cart.getTotalBookCount();
+        cart.getTotalCount();
         Gson gson = new Gson();
         String cartJsonStr = gson.toJson(cart);
         return "json:"+cartJsonStr;
